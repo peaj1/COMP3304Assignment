@@ -16,30 +16,9 @@ namespace ImageManipulationTool
     public partial class Form1 : Form
     {
 
-        ImageFactory _imageFactory;
         public Form1()
         {
             InitializeComponent();
-            
-            byte[] photoBytes = File.ReadAllBytes("FishAssets/AnglerFish_Lit.png");
-            ISupportedImageFormat format = new JpegFormat { Quality = 70 };
-            Size size = new Size(150, 150);
-            using (MemoryStream inStream = new MemoryStream(photoBytes))
-            {
-                using (MemoryStream outStream = new MemoryStream())
-                {
-                    using (_imageFactory = new ImageFactory(preserveExifData: true))
-                    {
-                        _imageFactory.Load(inStream)
-                                    .Resize(size)
-                                    .Format(format)
-                                    .Save(outStream);
-
-                        
-                    }
-                    
-                }
-            }
 
         }
 
