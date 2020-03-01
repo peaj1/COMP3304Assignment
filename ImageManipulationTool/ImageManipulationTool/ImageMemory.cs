@@ -14,24 +14,26 @@ namespace ImageManipulationTool
     class ImageMemory
     {
         byte[] photoBytes;
-        ISupportedImageFormat format;
-        Size size;
 
         public ImageMemory()
         {
-            photoBytes = File.ReadAllBytes("FishAssets/AnglerFish_Lit.png");
-            //format = new JpegFormat { Quality = 70 };
-            size = new Size(150, 150);
+        }
 
+        public Image loadImage(String filePath, Size imageSize)
+        {
+            photoBytes = File.ReadAllBytes(filePath);
             using (MemoryStream inStream = new MemoryStream(photoBytes))
             {
                 using (ImageFactory imageFactory = new ImageFactory(preserveExifData: true))
                 {
                     imageFactory.Load(inStream)
-                                .Resize(size);
-                                //.Format(format);
+                                .Resize(imageSize);
                 }
+
+                return(Image.FromStream(inStream));
             }
+
         }
     }
+
 }
