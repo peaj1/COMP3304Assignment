@@ -15,9 +15,10 @@ namespace ImageManipulationTool
 {
     public partial class Form1 : Form
     {
-
+        ImageMemory _imageMemory;
         public Form1()
         {
+            _imageMemory = new ImageMemory();
             InitializeComponent();
 
         }
