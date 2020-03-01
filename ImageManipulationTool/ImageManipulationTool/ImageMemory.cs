@@ -11,28 +11,37 @@ using ImageProcessor.Imaging.Formats;
 namespace ImageManipulationTool
 {
     
-    class ImageMemory
+    class ImageMemory: IModel
     {
+        public IList<String> files;
         byte[] photoBytes;
+        Size size;
 
         public ImageMemory()
         {
+            files = new List<String>();
         }
 
-        public Image loadImage(String filePath, Size imageSize)
+        public IList<String> load(IList<String> pathfilenames)
         {
-            photoBytes = File.ReadAllBytes(filePath);
+            files = pathfilenames;
+            return files;
+        }
+
+        public Image getImage(String key, int frameWidth, int frameHeight)
+        {
+            photoBytes = File.ReadAllBytes(key);
+            size = new Size(frameWidth, frameHeight);
+
             using (MemoryStream inStream = new MemoryStream(photoBytes))
             {
                 using (ImageFactory imageFactory = new ImageFactory(preserveExifData: true))
                 {
-                    imageFactory.Load(inStream)
-                                .Resize(imageSize);
+                    imageFactory.Load(inStream);
                 }
 
-                return(Image.FromStream(inStream));
+                return Image.FromStream(inStream);
             }
-
         }
     }
 

@@ -16,33 +16,70 @@ namespace ImageManipulationTool
 {
     public partial class Form1 : Form
     {
-        ImageMemory _imageMemory;
-        String path;
+        IModel _imageMemory;
+        int currentImage;
+        IList<String> pathfilenames;
+
         public Form1()
         {
             _imageMemory = new ImageMemory();
             InitializeComponent();
+            currentImage = 0;
+            pathfilenames = new List<String>();
 
         }
 
         private void BtnNext_Click(object sender, EventArgs e)
         {
+            if(currentImage == pathfilenames.Count - 1)
+            {
+                currentImage = 0;
+            } else
+            {
+                currentImage++;
+            }
+
+            Image image = _imageMemory.getImage(pathfilenames[currentImage], 150,150);
+
+            pictureBox1.Image = image;
 
         }
 
         private void BtnPrevious_Click(object sender, EventArgs e)
         {
+            if(currentImage == 0)
+            {
+                currentImage = pathfilenames.Count - 1;
+            }
+            else
+            {
+                currentImage--;
+            }
+
+            Image image = _imageMemory.getImage(pathfilenames[currentImage], 150, 150);
+
+            pictureBox1.Image = image;
 
         }
 
         private void BtnLoad_Click(object sender, EventArgs e)
         {
+            
+
             OpenFileDialog file = new OpenFileDialog();
-            if(file.ShowDialog() ==DialogResult.OK)
+            file.Multiselect = true;
+
+            if(file.ShowDialog() == DialogResult.OK)
             {
-                path = file.FileName;
+                foreach (String filePath in file.FileNames)
+                {
+                    pathfilenames.Add(filePath);
+                }
             }
-            var image = _imageMemory.loadImage(path, new Size(150,150));
+
+            //_imageMemory.load(pathfilenames);
+
+            Image image = _imageMemory.getImage(pathfilenames[currentImage], 150, 150);
 
             pictureBox1.Image = image;
         }
