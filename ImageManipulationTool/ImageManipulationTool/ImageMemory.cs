@@ -13,25 +13,29 @@ namespace ImageManipulationTool
     
     class ImageMemory: IModel
     {
-        public IList<String> files;
+        public List<String> pathfilenames;
         byte[] photoBytes;
         Size size;
 
         public ImageMemory()
         {
-            files = new List<String>();
+            pathfilenames = new List<String>();
         }
 
-        public IList<String> load(IList<String> pathfilenames)
+        public IList<String> load(IList<String> pathfileparam)
         {
-            files = pathfilenames;
-            return files;
+            
+                pathfilenames.AddRange(pathfileparam);
+
+            return pathfilenames;
         }
 
         public Image getImage(String key, int frameWidth, int frameHeight)
         {
             photoBytes = File.ReadAllBytes(key);
             size = new Size(frameWidth, frameHeight);
+
+
 
             using (MemoryStream inStream = new MemoryStream(photoBytes))
             {
@@ -49,6 +53,12 @@ namespace ImageManipulationTool
                     return Image.FromStream(outStream);
                 }
             }
+        }
+
+        public IList<String> fetchPathList()
+        {
+
+            return pathfilenames;
         }
     }
 

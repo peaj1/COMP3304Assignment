@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CollectImages.cs" />
     <Compile Include="delegates.cs" />
     <Compile Include="DrawImage.cs" />
     <Compile Include="Form1.cs">

@@ -9,8 +9,8 @@ namespace ImageManipulationTool
 {
     interface IDrawImage
     {
-        Image NextImage(int frameWidth, int frameHeight, IList<String> pathfilenames, getImageDelegate getImageParam);
+        Image NextImage(int frameWidth, int frameHeight, fetchListDelegate fetchPathList, getImageDelegate getImageParam);
 
-        Image PrevImage(int frameWidth, int frameHeight, IList<String> pathfilenames, getImageDelegate getImageParam);
+        Image PrevImage(int frameWidth, int frameHeight, fetchListDelegate fetchPathList, getImageDelegate getImageParam);
     }
 }

@@ -17,17 +17,24 @@ namespace ImageManipulationTool
     public partial class Form1 : Form
     {
         IModel _imageMemory;
-        getImageDelegate _getImageInstance;
         IDrawImage _drawImage;
-        IList<String> pathfilenames;
-        
+        CollectImages _collectImages;
+
+        getImageDelegate getImageInstance;
+        loadDelegate loadInstance;
+        fetchListDelegate fetchListInstance;
+
 
         public Form1()
         {
             _imageMemory = new ImageMemory();
-            _getImageInstance = _imageMemory.getImage;
             _drawImage = new DrawImage();
-            pathfilenames = new List<String>();
+            _collectImages = new CollectImages();
+
+            getImageInstance = _imageMemory.getImage;
+            loadInstance = _imageMemory.load;
+            fetchListInstance = _imageMemory.fetchPathList;
+
 
 
             InitializeComponent();
@@ -35,44 +42,21 @@ namespace ImageManipulationTool
 
         private void BtnNext_Click(object sender, EventArgs e)
         {
-            Image image = _drawImage.NextImage(pictureBox1.Width, pictureBox1.Height, pathfilenames, _getImageInstance);
+            Image image = _drawImage.NextImage(pictureBox1.Width, pictureBox1.Height, fetchListInstance, getImageInstance);
             pictureBox1.Image = image;
 
         }
 
         private void BtnPrevious_Click(object sender, EventArgs e)
         {
-            Image image = _drawImage.PrevImage(pictureBox1.Width, pictureBox1.Height, pathfilenames, _getImageInstance);
+            Image image = _drawImage.PrevImage(pictureBox1.Width, pictureBox1.Height, fetchListInstance, getImageInstance);
             pictureBox1.Image = image;
 
         }
 
         private void BtnLoad_Click(object sender, EventArgs e)
         {
-            
-
-            OpenFileDialog file = new OpenFileDialog();
-            file.Multiselect = true;
-
-            if(file.ShowDialog() == DialogResult.OK)
-            {
-                foreach (String filePath in file.FileNames)
-                {
-                    pathfilenames.Add(filePath);
-                }
-            }
-
-            //_imageMemory.load(pathfilenames);
-
-            int width = pictureBox1.Width;
-            int height = pictureBox1.Height;
-            
-            
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
+            _collectImages.OpenFiles(loadInstance);
         }
     }
 }

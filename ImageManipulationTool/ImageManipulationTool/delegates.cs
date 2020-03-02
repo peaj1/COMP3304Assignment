@@ -7,5 +7,9 @@ using System.Drawing;
 
 namespace ImageManipulationTool
 {
-        public delegate Image getImageDelegate(String key, int frameWidth, int frameHeight);
+    public delegate Image getImageDelegate(String key, int frameWidth, int frameHeight);
+
+    public delegate IList<String> loadDelegate(IList<String> pathfileparam);
+
+    public delegate IList<String> fetchListDelegate();
 }
