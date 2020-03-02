@@ -32,8 +32,6 @@ namespace ImageManipulationTool
         {
             photoBytes = File.ReadAllBytes(key);
             size = new Size(frameWidth, frameHeight);
-            var resizeMode = ImageProcessor.Imaging.ResizeMode.Max;
-            var r = new ImageProcessor.Imaging.ResizeLayer(size, resizeMode);
 
             using (MemoryStream inStream = new MemoryStream(photoBytes))
             {
@@ -43,7 +41,7 @@ namespace ImageManipulationTool
                     {
 
                         imageFactory.Load(inStream)
-                                    .Resize(r)
+                                    .Resize(size)
                                     .Save(outStream);
 
                     }

@@ -17,53 +17,32 @@ namespace ImageManipulationTool
     public partial class Form1 : Form
     {
         IModel _imageMemory;
-        int currentImage;
+        getImageDelegate _getImageInstance;
+        IDrawImage _drawImage;
         IList<String> pathfilenames;
+        
 
         public Form1()
         {
             _imageMemory = new ImageMemory();
-            InitializeComponent();
-            currentImage = 0;
+            _getImageInstance = _imageMemory.getImage;
+            _drawImage = new DrawImage();
             pathfilenames = new List<String>();
 
+
+            InitializeComponent();
         }
 
         private void BtnNext_Click(object sender, EventArgs e)
         {
-            if(currentImage == pathfilenames.Count - 1)
-            {
-                currentImage = 0;
-            } else
-            {
-                currentImage++;
-            }
-
-            int width = pictureBox1.Width;
-            int height = pictureBox1.Height;
-
-            Image image = _imageMemory.getImage(pathfilenames[currentImage], width,height);
-
+            Image image = _drawImage.NextImage(pictureBox1.Width, pictureBox1.Height, pathfilenames, _getImageInstance);
             pictureBox1.Image = image;
 
         }
 
         private void BtnPrevious_Click(object sender, EventArgs e)
         {
-            if(currentImage == 0)
-            {
-                currentImage = pathfilenames.Count - 1;
-            }
-            else
-            {
-                currentImage--;
-            }
-
-            int width = pictureBox1.Width;
-            int height = pictureBox1.Height;
-
-            Image image = _imageMemory.getImage(pathfilenames[currentImage], width, height);
-
+            Image image = _drawImage.PrevImage(pictureBox1.Width, pictureBox1.Height, pathfilenames, _getImageInstance);
             pictureBox1.Image = image;
 
         }
@@ -87,10 +66,13 @@ namespace ImageManipulationTool
 
             int width = pictureBox1.Width;
             int height = pictureBox1.Height;
+            
+            
+        }
 
-            Image image = _imageMemory.getImage(pathfilenames[currentImage], width, height);
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
 
-            pictureBox1.Image = image;
         }
     }
 }
