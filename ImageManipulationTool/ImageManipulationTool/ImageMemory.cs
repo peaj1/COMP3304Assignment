@@ -32,15 +32,24 @@ namespace ImageManipulationTool
         {
             photoBytes = File.ReadAllBytes(key);
             size = new Size(frameWidth, frameHeight);
+            var resizeMode = ImageProcessor.Imaging.ResizeMode.Max;
+            var r = new ImageProcessor.Imaging.ResizeLayer(size, resizeMode);
 
             using (MemoryStream inStream = new MemoryStream(photoBytes))
             {
-                using (ImageFactory imageFactory = new ImageFactory(preserveExifData: true))
+                using (MemoryStream outStream = new MemoryStream())
                 {
-                    imageFactory.Load(inStream);
-                }
+                    using (ImageFactory imageFactory = new ImageFactory(preserveExifData: true))
+                    {
 
-                return Image.FromStream(inStream);
+                        imageFactory.Load(inStream)
+                                    .Resize(r)
+                                    .Save(outStream);
+
+                    }
+
+                    return Image.FromStream(outStream);
+                }
             }
         }
     }

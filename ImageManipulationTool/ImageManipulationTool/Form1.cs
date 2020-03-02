@@ -39,7 +39,10 @@ namespace ImageManipulationTool
                 currentImage++;
             }
 
-            Image image = _imageMemory.getImage(pathfilenames[currentImage], 150,150);
+            int width = pictureBox1.Width;
+            int height = pictureBox1.Height;
+
+            Image image = _imageMemory.getImage(pathfilenames[currentImage], width,height);
 
             pictureBox1.Image = image;
 
@@ -56,7 +59,10 @@ namespace ImageManipulationTool
                 currentImage--;
             }
 
-            Image image = _imageMemory.getImage(pathfilenames[currentImage], 150, 150);
+            int width = pictureBox1.Width;
+            int height = pictureBox1.Height;
+
+            Image image = _imageMemory.getImage(pathfilenames[currentImage], width, height);
 
             pictureBox1.Image = image;
 
@@ -79,7 +85,10 @@ namespace ImageManipulationTool
 
             //_imageMemory.load(pathfilenames);
 
-            Image image = _imageMemory.getImage(pathfilenames[currentImage], 150, 150);
+            int width = pictureBox1.Width;
+            int height = pictureBox1.Height;
+
+            Image image = _imageMemory.getImage(pathfilenames[currentImage], width, height);
 
             pictureBox1.Image = image;
         }
