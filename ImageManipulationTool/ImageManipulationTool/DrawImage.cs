@@ -16,10 +16,12 @@ namespace ImageManipulationTool
             currentImage = 0;
         }
         
-        public Image NextImage(int frameWidth, int frameHeight, fetchListDelegate fetchListParam, getImageDelegate getImageParam)
+        public Image NextImage(int frameWidth, int frameHeight, loadDelegate load, getImageDelegate getImageParam)
         {
 
-            IList<String> tempList = fetchListParam();
+            IList<String> tempList = new List<String>();
+
+            tempList = load(tempList);
 
 
             if (currentImage == tempList.Count - 1)
@@ -36,9 +38,11 @@ namespace ImageManipulationTool
             return image;
         }
 
-        public Image PrevImage(int frameWidth, int frameHeight, fetchListDelegate fetchListParam, getImageDelegate getImageParam)
+        public Image PrevImage(int frameWidth, int frameHeight, loadDelegate load, getImageDelegate getImageParam)
         {
-            IList<String> tempList = fetchListParam();
+            IList<String> tempList = new List<String>();
+
+            tempList = load(tempList);
 
             if (currentImage == 0)
             {

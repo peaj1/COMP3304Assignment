@@ -24,9 +24,5 @@ namespace ImageManipulationTool
         /// <param name="frameHeight">the height (in pixles) of the 'frame' it is to occupy</param>
         /// <returns>the Image pointed identified by key</returns>
         Image getImage(String key, int frameWidth, int frameHeight);
-
-
-
-        IList<String> fetchPathList();
     }
 }

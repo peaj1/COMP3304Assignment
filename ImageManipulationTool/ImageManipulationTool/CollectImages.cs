@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace ImageManipulationTool
 {
-    class CollectImages
+    class CollectImages:ICollectImages
     {
 
         public CollectImages()

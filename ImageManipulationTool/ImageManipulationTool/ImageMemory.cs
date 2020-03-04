@@ -13,25 +13,35 @@ namespace ImageManipulationTool
     
     class ImageMemory: IModel
     {
-        public List<String> pathfilenames;
-        byte[] photoBytes;
-        Size size;
+        //DECLARE pathFileNames of type List<String>
+        List<String> _pathFileNames;
 
         public ImageMemory()
         {
-            pathfilenames = new List<String>();
+            //INITIALISE pathfilenames as List of Strings
+            _pathFileNames = new List<String>();
         }
 
-        public IList<String> load(IList<String> pathfileparam)
+        //METHOD to Add collected images into Memory called load
+        //PARAMETER pathFileParam
+        public IList<String> load(IList<String> pathFileParam)
         {
-            
-                pathfilenames.AddRange(pathfileparam);
+            //Append pathFileParam List to _pathFileNames list
+            _pathFileNames.AddRange(pathFileParam);
 
-            return pathfilenames;
+            //return _pathFileNames
+            return _pathFileNames;
         }
 
         public Image getImage(String key, int frameWidth, int frameHeight)
         {
+
+            //DECLARE local variable called photoBytes of type byte[]
+            //DECLARE local variable called size of type Size
+            byte[] photoBytes;
+            Size size;
+
+            
             photoBytes = File.ReadAllBytes(key);
             size = new Size(frameWidth, frameHeight);
 
@@ -58,7 +68,7 @@ namespace ImageManipulationTool
         public IList<String> fetchPathList()
         {
 
-            return pathfilenames;
+            return _pathFileNames;
         }
     }
 
