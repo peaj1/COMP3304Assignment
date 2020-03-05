@@ -17,7 +17,7 @@ namespace ImageManipulationTool
     /// <summary>
     /// Class for the form, displays each of the controls onto the form and places images onto the form
     /// </summary>
-    public partial class Form1 : Form
+    public partial class ImageManipulationForm : Form
     {
 
         //DECLARE _imageFacade as type interface IImageFacade
@@ -26,7 +26,7 @@ namespace ImageManipulationTool
         /// <summary>
         /// Main method of Form1 class which initialises the other class instances and the delegate variables
         /// </summary>
-        public Form1()
+        public ImageManipulationForm()
         {
  
             //INITIALISE _imageFacade as ImageFacade class

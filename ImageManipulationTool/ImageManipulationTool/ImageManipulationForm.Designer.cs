@@ -1,6 +1,6 @@
 ﻿namespace ImageManipulationTool
 {
-    partial class Form1
+    partial class ImageManipulationForm
     {
         /// <summary>
         /// Required designer variable.

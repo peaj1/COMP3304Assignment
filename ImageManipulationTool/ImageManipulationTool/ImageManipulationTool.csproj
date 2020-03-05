@@ -65,13 +65,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CollectImages.cs" />
-    <Compile Include="delegates.cs" />
+    <Compile Include="Delegates.cs" />
     <Compile Include="DrawImage.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="ImageManipulationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ImageManipulationForm.Designer.cs">
+      <DependentUpon>ImageManipulationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="IDrawImage.cs" />
     <Compile Include="IImageFacade.cs" />
@@ -81,8 +81,8 @@
     <Compile Include="ICollectImages.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="ImageManipulationForm.resx">
+      <DependentUpon>ImageManipulationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
