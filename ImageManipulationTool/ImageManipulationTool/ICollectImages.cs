@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ImageManipulationTool
 {
+    /// <summary>
+    /// Interface called ICollectImages to be used to allow access of the openFiles function of the CollectImages class
+    /// </summary>
     interface ICollectImages
     {
         /// <summary>

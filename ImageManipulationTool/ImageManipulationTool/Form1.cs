@@ -31,7 +31,9 @@ namespace ImageManipulationTool
         getImageDelegate getImageInstance;
         loadDelegate loadInstance;
 
-
+        /// <summary>
+        /// Main method of Form1 class which initialises the other class instances and the delegate variables
+        /// </summary>
         public Form1()
         {
             //INITIALISE _imageMemory as ImageMemory class

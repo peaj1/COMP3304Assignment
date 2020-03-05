@@ -13,11 +13,6 @@ namespace ImageManipulationTool
     ///</summary>
     class CollectImages :ICollectImages
     {
-        
-
-        public CollectImages()
-        {
-        }
 
         ///<summary>
         ///METHOD to open the file explorer and add each filepath to a list

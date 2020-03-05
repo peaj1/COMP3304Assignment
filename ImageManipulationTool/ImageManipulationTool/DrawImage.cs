@@ -18,6 +18,9 @@ namespace ImageManipulationTool
         //DECLARE _currentImage variable
         int _currentImage;
 
+        /// <summary>
+        /// Main method of Draw image which initialises _currentImage to 0 when an instance of DrawImage is created
+        /// </summary>
         public DrawImage()
         {
             //Initialise _currentImage variable to 0
