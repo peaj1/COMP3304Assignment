@@ -9,6 +9,7 @@ namespace ImageManipulationTool
 {
     /// <summary>
     /// Interface called IDrawImage to be used to allow access of the NextImage and PrevImage functions of the DrawImage class
+    /// Authors: Jude Mallett & Jon Pearson
     /// </summary>
     interface IDrawImage
     {

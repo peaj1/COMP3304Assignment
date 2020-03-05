@@ -9,7 +9,8 @@ namespace ImageManipulationTool
 {
     ///<summary>
     ///Class used to collect images using a windows explorer User Interface.
-    ///Then to pass collected files to ImageMemory class for storage, implements ICollectImages interface  
+    ///Then to pass collected files to ImageMemory class for storage, implements ICollectImages interface 
+    ///Authors: Jude Mallett & Jon Pearson
     ///</summary>
     class CollectImages :ICollectImages
     {

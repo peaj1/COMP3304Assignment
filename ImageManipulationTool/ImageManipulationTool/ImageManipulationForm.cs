@@ -16,6 +16,7 @@ namespace ImageManipulationTool
 {
     /// <summary>
     /// Class for the form, displays each of the controls onto the form and places images onto the form
+    /// Authors: Jude Mallett & Jon Pearson
     /// </summary>
     public partial class ImageManipulationForm : Form
     {

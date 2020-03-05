@@ -9,6 +9,7 @@ namespace ImageManipulationTool
 {
     /// <summary>
     /// Delegate for getImage method in ImageMemory class
+    /// Authors: Jude Mallett & Jon Pearson
     /// </summary>
     /// <param name="key"></param>
     /// <param name="frameWidth">The width (in pixels) of the frame it is to occupy </param>

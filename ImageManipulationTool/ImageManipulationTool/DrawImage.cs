@@ -10,6 +10,7 @@ namespace ImageManipulationTool
 
     /// <summary>
     /// CLASS to draw the image, passes image values to form class, implements IDrawImage interface
+    /// Authors: Jude Mallett & Jon Pearson
     /// </summary>
     class DrawImage :IDrawImage
     {

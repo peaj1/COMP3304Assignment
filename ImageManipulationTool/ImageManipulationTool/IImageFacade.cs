@@ -9,6 +9,7 @@ namespace ImageManipulationTool
 {
     /// <summary>
     /// Interface to allow access to the NextImage, PrevImage and LoadImage methods in the ImageFacade class
+    /// Authors: Jude Mallett & Jon Pearson
     /// </summary>
     interface IImageFacade
     {

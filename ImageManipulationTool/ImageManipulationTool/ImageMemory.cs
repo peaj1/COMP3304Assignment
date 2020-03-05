@@ -13,8 +13,9 @@ namespace ImageManipulationTool
     /// <summary>
     /// ImageMemory class which Implements the Imodel Interface
     /// This class allows the user to load a reference to collected images into memory as Strings and to reaccess them using a closed memory stream as images
+    /// Authors: Jude Mallett & Jon Pearson
     /// </summary>
-    class ImageMemory: IModel
+    class ImageMemory : IModel
     {
         //DECLARE pathFileNames of type List<String>
         List<String> _pathFileNames;
@@ -66,22 +67,23 @@ namespace ImageManipulationTool
             size = new Size(frameWidth, frameHeight);
             
             //Create and close a Memory Stream from the photoBytes variable
-            using (MemoryStream inStream = new MemoryStream(photoBytes))
+            //Code edited from original source author: James M South
+            using (MemoryStream streamInput = new MemoryStream(photoBytes))
             {
-                using (MemoryStream outStream = new MemoryStream())
+                using (MemoryStream streamOutput = new MemoryStream())
                 {
                     //create an imageFactory using ImageProcessors inbuilt ImageFactory method to load and resize the image from the inStream so that it can be used
                     using (ImageFactory imageFactory = new ImageFactory())
                     {
 
-                        imageFactory.Load(inStream)
+                        imageFactory.Load(streamInput)
                                     .Resize(size)
-                                    .Save(outStream);
+                                    .Save(streamOutput);
 
                     }
 
                     //return the resized image from the outStream before the memory stream is closed
-                    return Image.FromStream(outStream);
+                    return Image.FromStream(streamOutput);
                 }
             }
         }

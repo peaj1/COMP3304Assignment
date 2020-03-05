@@ -16,6 +16,7 @@ namespace ImageManipulationTool
     /// <summary>
     /// Facade for the program, to hide complex functionality and provide a
     ///  simple interface which the user can use to access the system, implements the IImageFacade interface
+    ///  Authors: Jude Mallett & Jon Pearson
     /// </summary>
     class ImageFacade : IImageFacade
     {

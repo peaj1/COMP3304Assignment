@@ -8,6 +8,7 @@ namespace ImageManipulationTool
 {
     /// <summary>
     /// Interface called ICollectImages to be used to allow access of the openFiles function of the CollectImages class
+    /// Authors: Jude Mallett & Jon Pearson
     /// </summary>
     interface ICollectImages
     {

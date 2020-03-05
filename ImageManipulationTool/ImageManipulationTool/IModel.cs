@@ -7,6 +7,11 @@ using System.Drawing;
 
 namespace ImageManipulationTool
 {
+    /// <summary>
+    /// Code is taken from Blackboard given to use by Marc Price
+    /// 
+    /// Author: Marc Price
+    /// </summary>
     interface IModel
     {
         /// <summary>
