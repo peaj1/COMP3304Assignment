@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using ImageProcessor;
 using ImageProcessor.Imaging.Formats;
 using System.IO;
@@ -49,6 +48,11 @@ namespace ImageManipulationTool
             Image image = _drawImage.NextImage(Width, Height, loadInstance, getImageInstance);
 
             return image;
+        }
+
+        public Image PrevImage(int Width, int Height)
+        {
+
         }
 
     }

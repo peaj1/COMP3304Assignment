@@ -66,10 +66,12 @@ namespace ImageManipulationTool
             //PARAMETER height of picture box
             //PARAMETER getImageInstance delegate to ImageMemory.getImage method
             //make image equal the return of DrawImage.PrevImage method
-           
+
 
             //change picture box image to local image variable
-            pictureBox1.Image = _imageFacade.NextImage(pictureBox1.Width, pictureBox1.Height);
+            Image image = _imageFacade.NextImage(pictureBox1.Width, pictureBox1.Height);
+
+            pictureBox1.Image = image;
 
         }
 
