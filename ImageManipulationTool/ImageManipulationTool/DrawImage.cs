@@ -120,13 +120,28 @@ namespace ImageManipulationTool
 
         public Image LoadImage(int frameWidth, int frameHeight, loadDelegate load, getImageDelegate getImageParam)
         {
+            //DECLARE image of type Image to be populated and returned
+            Image image;
+
+            //DECLARE list to read value of position of the images
             IList<String> tempList = new List<String>();
 
             //populate tempList with the List in ImageMemory
             tempList = load(tempList);
 
-            Image image = getImageParam(tempList[_currentImage], frameWidth, frameHeight);
-
+            //if the retrieved list is not empty run this code
+            //else if the retrieved list is empty create an empty image to be returned
+            if (tempList.Count > 0)
+            {
+                //pass list position and frame dimensions of prev image to getImageParam delegate
+                image = getImageParam(tempList[_currentImage], frameWidth, frameHeight);
+            }
+            else
+            {
+                image = new Bitmap(10, 10);
+            }
+            
+            //returns image to where function was called
             return image;
         }
     }

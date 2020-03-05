@@ -22,8 +22,8 @@ namespace ImageManipulationTool
         //DECLARE _imageMemory of type IModel
         //DECLARE _drawImage of type IDrawImage
         //DECLARE _CollectImages of type ICollectImages
-        IModel _imageMemory;
-        IDrawImage _drawImage;
+        private IModel _imageMemory;
+        private IDrawImage _drawImage;
         ICollectImages _collectImages;
 
         //DECLARE getImageInstance Delegate of type getImageDelegate
