@@ -28,7 +28,6 @@ namespace ImageManipulationTool
         //DECLARE fetchListInstance Delegate of type fetchListDelegate
         getImageDelegate getImageInstance;
         loadDelegate loadInstance;
-        fetchListDelegate fetchListInstance;
 
 
         public Form1()
@@ -45,8 +44,7 @@ namespace ImageManipulationTool
             //INITIALISE fetchListInstance as _imageMemory.fetchPathList method
             getImageInstance = _imageMemory.getImage;
             loadInstance = _imageMemory.load;
-            fetchListInstance = _imageMemory.fetchPathList;
-
+          
             //RUN InitializeComponent method for User Interface
             InitializeComponent();
         }
