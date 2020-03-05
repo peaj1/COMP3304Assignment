@@ -100,6 +100,9 @@ namespace ImageManipulationTool
             //RUN OpenFiles method in CollectImages class
             //PARAMETER loadInstance delegate to ImageMemory.load method
             _collectImages.OpenFiles(loadInstance);
+            Image image = _drawImage.LoadImage(pictureBox1.Width, pictureBox1.Height, loadInstance, getImageInstance);
+
+            pictureBox1.Image = image;
         }
     }
 }
