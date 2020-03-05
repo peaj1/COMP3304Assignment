@@ -8,7 +8,10 @@ namespace ImageManipulationTool
 {
     interface ICollectImages
     {
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="load"></param>
         void OpenFiles(loadDelegate load);
     }
 }

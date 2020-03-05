@@ -9,27 +9,39 @@ namespace ImageManipulationTool
 {
     class CollectImages:ICollectImages
     {
-
+        ///<summary>
+        ///Class used to collect images using a windows explorer User Interface.
+        ///Then to pass collected files to ImageMemory class for storage. 
+        ///</summary>
         public CollectImages()
         {
         }
 
-
+        ///<summary>
+        ///METHOD to open the file explorer and add each filepath to a list
+        ///</summary>
+        ///<param name="load">Delegate</param>
         public void OpenFiles(loadDelegate load)
         {
-
+            //Open File explorer
             OpenFileDialog file = new OpenFileDialog();
+
+            //Allow user to select multiple files at once
             file.Multiselect = true;
 
+            //Declaration of list used to store file path's of images
             IList<String> tempPathFiles = new List<String>();
 
+            //If Explorer returns a result, add each selected image to list
             if (file.ShowDialog() == DialogResult.OK)
             {
+                //Loops through each image selected
                 foreach (String filePath in file.FileNames)
                 {
+                    //add image path to list
                     tempPathFiles.Add(filePath); 
                 }
-
+                //pass list to loadDelegate
                 IList<String> newPathList = load(tempPathFiles);
                 
             }
