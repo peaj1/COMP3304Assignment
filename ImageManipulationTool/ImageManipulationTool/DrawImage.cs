@@ -7,12 +7,20 @@ using System.Drawing;
 
 namespace ImageManipulationTool
 {
-    class DrawImage:IDrawImage
+
+    /// <summary>
+    /// CLASS to draw the image, passes image values to form class, implements IDrawImage interface
+    /// </summary>
+    class DrawImage :IDrawImage
     {
+
+        
+        //DECLARE _currentImage variable
         int _currentImage;
 
         public DrawImage()
         {
+            //Initialise _currentImage variable to 0
             _currentImage = 0;
         }
 

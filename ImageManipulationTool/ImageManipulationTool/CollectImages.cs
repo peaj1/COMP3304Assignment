@@ -7,12 +7,14 @@ using System.Windows.Forms;
 
 namespace ImageManipulationTool
 {
-    class CollectImages:ICollectImages
+    ///<summary>
+    ///Class used to collect images using a windows explorer User Interface.
+    ///Then to pass collected files to ImageMemory class for storage, implements ICollectImages interface  
+    ///</summary>
+    class CollectImages :ICollectImages
     {
-        ///<summary>
-        ///Class used to collect images using a windows explorer User Interface.
-        ///Then to pass collected files to ImageMemory class for storage. 
-        ///</summary>
+        
+
         public CollectImages()
         {
         }

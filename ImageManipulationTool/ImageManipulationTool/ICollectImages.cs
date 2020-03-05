@@ -9,9 +9,9 @@ namespace ImageManipulationTool
     interface ICollectImages
     {
         /// <summary>
-        /// 
+        /// Open windows file explorer and add selected image references to list
         /// </summary>
-        /// <param name="load"></param>
+        /// <param name="load">Delegate for the load function in ImageMemory</param>
         void OpenFiles(loadDelegate load);
     }
 }
