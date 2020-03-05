@@ -74,6 +74,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="IDrawImage.cs" />
+    <Compile Include="ImageFacade.cs" />
     <Compile Include="ImageMemory.cs" />
     <Compile Include="IModel.cs" />
     <Compile Include="ICollectImages.cs" />
