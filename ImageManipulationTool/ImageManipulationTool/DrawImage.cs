@@ -117,5 +117,17 @@ namespace ImageManipulationTool
             //returns image to where function was called
             return image;
         }
+
+        public Image LoadImage(int frameWidth, int frameHeight, loadDelegate load, getImageDelegate getImageParam)
+        {
+            IList<String> tempList = new List<String>();
+
+            //populate tempList with the List in ImageMemory
+            tempList = load(tempList);
+
+            Image image = getImageParam(tempList[_currentImage], frameWidth, frameHeight);
+
+            return image;
+        }
     }
 }

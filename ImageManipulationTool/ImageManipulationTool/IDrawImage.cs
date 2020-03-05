@@ -29,5 +29,7 @@ namespace ImageManipulationTool
         /// <param name="load">Delegate for list of images stored</param>
         /// <param name="getImageParam">getImageDelegate for info about image being displayed</param>
         Image PrevImage(int frameWidth, int frameHeight, loadDelegate load, getImageDelegate getImageParam);
+
+        Image LoadImage(int frameWidth, int frameHeight, loadDelegate load, getImageDelegate getImageParam);
     }
 }

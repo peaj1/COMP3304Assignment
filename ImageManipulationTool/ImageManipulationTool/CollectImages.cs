@@ -25,7 +25,7 @@ namespace ImageManipulationTool
 
             //Allow user to select multiple files at once
             file.Multiselect = true;
-
+            file.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG";
             //Declaration of list used to store file path's of images
             IList<String> tempPathFiles = new List<String>();
 
