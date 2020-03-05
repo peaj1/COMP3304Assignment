@@ -36,7 +36,7 @@ namespace ImageManipulationTool
         ///</summary>
         ///<returns>List of Strings containing references to collected file paths</returns>
         ///<param name="pathFileParam">a list of Strings holding new file paths to be added to memory</param>
-        public IList<String> load(IList<String> pathFileParam)
+        public IList<String> Load(IList<String> pathFileParam)
         {
             //Append pathFileParam List to _pathFileNames list
             _pathFileNames.AddRange(pathFileParam);
@@ -53,7 +53,7 @@ namespace ImageManipulationTool
         ///<param name="key">String holding the file path that needs to be opened, edited and displayed</param>
         ///<param name="frameWidth">int holding the width of the Picturebox that the image will be resized to</param>
         ///<param name="height">int holding the height of the Picturebox that the image will be resized to</param>
-        public Image getImage(String key, int frameWidth, int frameHeight)
+        public Image GetImage(String key, int frameWidth, int frameHeight)
         {
             //DECLARE local variable called photoBytes of type byte[]
             //DECLARE local variable called size of type Size

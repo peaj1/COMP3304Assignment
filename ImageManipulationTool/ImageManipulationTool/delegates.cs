@@ -14,7 +14,7 @@ namespace ImageManipulationTool
     /// <param name="frameWidth">The width (in pixels) of the frame it is to occupy </param>
     /// <param name="frameHeight">The height (in pixels) of the frame it is to occupy</param>
     /// <returns>Image information to imageMemory class</returns>
-    public delegate Image getImageDelegate(String key, int frameWidth, int frameHeight);
+    public delegate Image GetImageDelegate(String key, int frameWidth, int frameHeight);
 
 
     /// <summary>
@@ -22,5 +22,5 @@ namespace ImageManipulationTool
     /// </summary>
     /// <param name="pathfileparam">List to store path files</param>
     /// <returns>Image list to imageMemory class</returns>
-    public delegate IList<String> loadDelegate(IList<String> pathfileparam);
+    public delegate IList<String> LoadDelegate(IList<String> pathfileparam);
 }

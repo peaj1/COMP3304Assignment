@@ -15,7 +15,7 @@ namespace ImageManipulationTool
     {
 
         
-        //DECLARE _currentImage variable
+        //DECLARE _currentImage variable of type int
         int _currentImage;
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace ImageManipulationTool
         ///<param name="frameHeight">value for the height of the frame the image is being stored in</param>
         ///<param name="loadInstance">Delegate to load function in imageMemory class</param>
         ///<param name="getImageParam">send values for image to be displayed to the getImageDelegate</param>
-        public Image NextImage(int frameWidth, int frameHeight, loadDelegate loadInstance, getImageDelegate getImageParam)
+        public Image NextImage(int frameWidth, int frameHeight, LoadDelegate loadInstance, GetImageDelegate getImageParam)
         {
             //DECLARE image of type Image to be populated and returned
             Image image;
@@ -54,10 +54,12 @@ namespace ImageManipulationTool
                 //else increase current image by one
                 if (_currentImage == tempList.Count - 1)
                 {
+                    //set _currentImage to 0
                     _currentImage = 0;
                 }
                 else
                 {
+                    //add one to _currentImage
                     _currentImage++;
                 }
 
@@ -66,6 +68,7 @@ namespace ImageManipulationTool
             }
             else
             {
+                //set image to a new blank bitmap image
                 image = new Bitmap(10,10);
             }
 
@@ -81,7 +84,7 @@ namespace ImageManipulationTool
         ///<param name="frameHeight">value for the height of the frame the image is being stored in</param>
         ///<param name="load">Delegate to load function in imageMemory class</param>
         ///<param name="getImageParam">send values for image to be displayed to the getImageDelegate</param>
-        public Image PrevImage(int frameWidth, int frameHeight, loadDelegate load, getImageDelegate getImageParam)
+        public Image PrevImage(int frameWidth, int frameHeight, LoadDelegate load, GetImageDelegate getImageParam)
         {
             //DECLARE image of type Image to be populated and returned
             Image image;
@@ -100,10 +103,12 @@ namespace ImageManipulationTool
                 //else increase current image by one
                 if (_currentImage == 0)
                 {
+                    //set _currentImage to the length of tempList
                     _currentImage = tempList.Count - 1;
                 }
                 else
                 {
+                    //minus one from _currentImage
                     _currentImage--;
                 }
                 //pass list position and frame dimensions of prev image to getImageParam delegate
@@ -111,6 +116,7 @@ namespace ImageManipulationTool
             }
             else
             {
+                //set image variable to be blank bitmap image
                 image = new Bitmap(10, 10);
             }
 
@@ -118,15 +124,27 @@ namespace ImageManipulationTool
             return image;
         }
 
-        public Image LoadImage(int frameWidth, int frameHeight, loadDelegate load, getImageDelegate getImageParam)
+
+        /// <summary>
+        /// Loads the image into the image variable from the image list passed from ImageMemory and returns the image
+        /// </summary>
+        /// <param name="frameWidth">Width of the frame (in pixels) it is to occupy</param>
+        /// <param name="frameHeight">Width of the frame (in pixels) it is to occupy</param>
+        /// <param name="load">Delegate for list of images stored</param>
+        /// <param name="getImageParam">getImageDelegate for info about image being displayed</param>
+        /// <returns>image as an Image object</returns>
+        public Image LoadImage(int frameWidth, int frameHeight, LoadDelegate load, GetImageDelegate getImageParam)
         {
+            //INSTANTIATE tempList by making it a new List<String>
             IList<String> tempList = new List<String>();
 
             //populate tempList with the List in ImageMemory
             tempList = load(tempList);
 
+            //Set image variable to the getImageParam method and pass the list and frame width and height
             Image image = getImageParam(tempList[_currentImage], frameWidth, frameHeight);
 
+            //return image as type Image
             return image;
         }
     }

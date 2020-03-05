@@ -13,7 +13,11 @@ using System.Diagnostics;
 
 namespace ImageManipulationTool
 {
-    class ImageFacade
+    /// <summary>
+    /// Facade for the program, to hide complex functionality and provide a
+    ///  simple interface which the user can use to access the system, implements the IImageFacade interface
+    /// </summary>
+    class ImageFacade : IImageFacade
     {
 
         //DECLARE _imageMemory of type IModel
@@ -25,9 +29,15 @@ namespace ImageManipulationTool
 
         //DECLARE getImageInstance Delegate of type getImageDelegate
         //DECLARE loadInstance Delegate of type loadDelegate
-        getImageDelegate getImageInstance;
-        loadDelegate loadInstance;
+        GetImageDelegate _getImageInstance;
+        LoadDelegate _loadInstance;
 
+
+        /// <summary>
+        /// Main Method for the ImageFacade class which implements the IImageFacade interface
+        /// Run whenever the form buttons are clicked
+        /// used to step through each image in the list
+        /// </summary>
         public ImageFacade()
         {
             //INITIALISE _imageMemory as ImageMemory class
@@ -39,30 +49,55 @@ namespace ImageManipulationTool
 
         //INITIALISE getImageInstance as _imageMemory.getImage method
         //INITIALISE loadInstance as _imageMemory.load method
-        getImageInstance = _imageMemory.getImage;
-            loadInstance = _imageMemory.load;
+        _getImageInstance = _imageMemory.GetImage;
+            _loadInstance = _imageMemory.Load;
         }
 
-        public Image NextImage(int Width, int Height)
+        /// <summary>
+        /// Gets value for next image stored in the list and passes image to the form
+        /// </summary>
+        /// <param name="width">Width of the frame (in pixels) it is to occupy</param>
+        /// <param name="height">Height of the frame (in pixels) it is to occupy</param>
+        /// <returns>the image to the form</returns>
+        public Image NextImage(int width, int height)
         {
-            Image image = _drawImage.NextImage(Width, Height, loadInstance, getImageInstance);
+            //DECLARE image of type Image & set image variable to the image object returned from the _drawImage class
+            Image image = _drawImage.NextImage(width, height, _loadInstance, _getImageInstance);
 
+            //return object of type Image to place the method was called from
             return image;
         }
 
-        public Image PrevImage(int Width, int Height)
+        /// <summary>
+        /// Gets value for previous image stored in the list and passes image to the form
+        /// </summary>
+        /// <param name="width">Width of the frame (in pixels) it is to occupy</param>
+        /// <param name="height">Height of the frame (in pixels) it is to occupy</param>
+        /// <returns>the image to the form</returns>
+        public Image PrevImage(int width, int height)
         {
-            Image image = _drawImage.PrevImage(Width, Height, loadInstance, getImageInstance);
+            //DECLARE image of type Image & set image variable to the image object returned from the _drawImage class
+            Image image = _drawImage.PrevImage(width, height, _loadInstance, _getImageInstance);
 
+            //return object of type Image to place the method was called from
             return image;
         }
 
-        public Image LoadImage(int Width, int Height)
-        {
-            _collectImages.OpenFiles(loadInstance);
+        /// <summary>
+        /// calls Open Files function and passes the image to the form
+        /// </summary>
+        /// <param name="width">Width of the frame (in pixels) it is to occupy</param>
+        /// <param name="height">Height of the frame (in pixels) it is to occupy</param>
+        /// <returns>the image to the form</returns>
+        public Image LoadImage(int width, int height)
+        {   
+            //Calls the OpenFiles method from the _collectImages class
+            _collectImages.OpenFiles(_loadInstance);
 
-            Image image = _drawImage.LoadImage(Width, Height, loadInstance, getImageInstance);
+            //DECLARE image of type Image & set image variable to the image object returned from the _drawImage class
+            Image image = _drawImage.LoadImage(width, height, _loadInstance, _getImageInstance);
 
+            //return object of type Image to place the method was called from
             return image;
         }
 

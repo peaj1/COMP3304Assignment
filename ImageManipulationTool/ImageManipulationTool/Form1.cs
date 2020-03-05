@@ -20,8 +20,8 @@ namespace ImageManipulationTool
     public partial class Form1 : Form
     {
 
-        
-        ImageFacade _imageFacade;
+        //DECLARE _imageFacade as type interface IImageFacade
+        IImageFacade _imageFacade;
 
         /// <summary>
         /// Main method of Form1 class which initialises the other class instances and the delegate variables
@@ -29,6 +29,7 @@ namespace ImageManipulationTool
         public Form1()
         {
  
+            //INITIALISE _imageFacade as ImageFacade class
             _imageFacade = new ImageFacade();
 
           
@@ -42,8 +43,7 @@ namespace ImageManipulationTool
         private void BtnNext_Click(object sender, EventArgs e)
         {
             
-            //change picture box image to local image variable
-             
+            //change picture box image to Image passed from ImageFacade class
             pictureBox1.Image = _imageFacade.NextImage(pictureBox1.Width, pictureBox1.Height);
 
         }
@@ -54,7 +54,7 @@ namespace ImageManipulationTool
         private void BtnPrevious_Click(object sender, EventArgs e)
         {
 
-           //change picture box image to local image variable
+           //change picture box image to Image passed from ImageFacade class
             pictureBox1.Image = _imageFacade.PrevImage(pictureBox1.Width, pictureBox1.Height);
 
         }
@@ -63,7 +63,7 @@ namespace ImageManipulationTool
         /// </summary>
         private void BtnLoad_Click(object sender, EventArgs e)
         {
-
+            //load in picures and change picture box image to image passed from ImageFacade class
             pictureBox1.Image = _imageFacade.LoadImage(pictureBox1.Width, pictureBox1.Height);
         }
     }

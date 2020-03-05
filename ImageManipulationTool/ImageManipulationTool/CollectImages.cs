@@ -18,13 +18,14 @@ namespace ImageManipulationTool
         ///METHOD to open the file explorer and add each filepath to a list
         ///</summary>
         ///<param name="load">Delegate</param>
-        public void OpenFiles(loadDelegate load)
+        public void OpenFiles(LoadDelegate load)
         {
             //Open File explorer
             OpenFileDialog file = new OpenFileDialog();
 
             //Allow user to select multiple files at once
             file.Multiselect = true;
+            //Add filter to block non-image type files
             file.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG";
             //Declaration of list used to store file path's of images
             IList<String> tempPathFiles = new List<String>();
