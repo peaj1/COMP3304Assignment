@@ -14,6 +14,9 @@ using System.Diagnostics;
 
 namespace ImageManipulationTool
 {
+    /// <summary>
+    /// Class for the form, displays each of the controls onto the form and places images onto the form
+    /// </summary>
     public partial class Form1 : Form
     {
         //DECLARE _imageMemory of type IModel
@@ -25,7 +28,6 @@ namespace ImageManipulationTool
 
         //DECLARE getImageInstance Delegate of type getImageDelegate
         //DECLARE loadInstance Delegate of type loadDelegate
-        //DECLARE fetchListInstance Delegate of type fetchListDelegate
         getImageDelegate getImageInstance;
         loadDelegate loadInstance;
 
@@ -41,7 +43,6 @@ namespace ImageManipulationTool
 
             //INITIALISE getImageInstance as _imageMemory.getImage method
             //INITIALISE loadInstance as _imageMemory.load method
-            //INITIALISE fetchListInstance as _imageMemory.fetchPathList method
             getImageInstance = _imageMemory.getImage;
             loadInstance = _imageMemory.load;
           
@@ -49,15 +50,15 @@ namespace ImageManipulationTool
             InitializeComponent();
         }
 
-        //METHOD called BtnNext_Click
-        //Runs when next button is clicked
+        /// <summary>
+        /// Runs when the next button on the form is clicked
+        /// </summary>
         private void BtnNext_Click(object sender, EventArgs e)
         {
             //CREATE local variable called image of type Image
             //RUN PrevImage method in DrawImage class
             //PARAMETER width of picture box
             //PARAMETER height of picture box
-            //PARAMETER fetchListInstance delegate to ImageMemory.fetchPathList method
             //PARAMETER getImageInstance delegate to ImageMemory.getImage method
             //make image equal the return of DrawImage.PrevImage method
             Image image = _drawImage.NextImage(pictureBox1.Width, pictureBox1.Height, loadInstance, getImageInstance);
@@ -67,15 +68,15 @@ namespace ImageManipulationTool
 
         }
 
-        //METHOD called BtnPrevious_Click
-        //Runs when Previous button is clicked
+        /// <summary>
+        /// Runs when previous button on the form is clicked
+        /// </summary>
         private void BtnPrevious_Click(object sender, EventArgs e)
         {
             //CREATE local variable called image of type Image
             //RUN PrevImage method in DrawImage class
             //PARAMETER width of picture box
             //PARAMETER height of picture box
-            //PARAMETER fetchListInstance delegate to ImageMemory.fetchPathList method
             //PARAMETER getImageInstance delegate to ImageMemory.getImage method
             //make image equal the return of DrawImage.PrevImage method
             Image image = _drawImage.PrevImage(pictureBox1.Width, pictureBox1.Height, loadInstance, getImageInstance);
@@ -84,8 +85,9 @@ namespace ImageManipulationTool
             pictureBox1.Image = image;
 
         }
-        //METHOD called BtnLoad_Click
-        //Runs when load button is clicked
+        /// <summary>
+        /// Runs when the load button on the form is clicked
+        /// </summary>
         private void BtnLoad_Click(object sender, EventArgs e)
         {
             //RUN OpenFiles method in CollectImages class
