@@ -31,6 +31,8 @@ namespace ImageManipulationTool
         getImageDelegate getImageInstance;
         loadDelegate loadInstance;
 
+        ImageFacade _imageFacade;
+
         /// <summary>
         /// Main method of Form1 class which initialises the other class instances and the delegate variables
         /// </summary>
@@ -42,6 +44,7 @@ namespace ImageManipulationTool
             _imageMemory = new ImageMemory();
             _drawImage = new DrawImage();
             _collectImages = new CollectImages();
+            _imageFacade = new ImageFacade();
 
             //INITIALISE getImageInstance as _imageMemory.getImage method
             //INITIALISE loadInstance as _imageMemory.load method
@@ -63,10 +66,10 @@ namespace ImageManipulationTool
             //PARAMETER height of picture box
             //PARAMETER getImageInstance delegate to ImageMemory.getImage method
             //make image equal the return of DrawImage.PrevImage method
-            Image image = _drawImage.NextImage(pictureBox1.Width, pictureBox1.Height, loadInstance, getImageInstance);
+           
 
             //change picture box image to local image variable
-            pictureBox1.Image = image;
+            pictureBox1.Image = _imageFacade.NextImage(pictureBox1.Width, pictureBox1.Height);
 
         }
 
