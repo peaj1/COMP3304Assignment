@@ -37,28 +37,40 @@ namespace ImageManipulationTool
         ///<param name="getImageParam">send values for image to be displayed to the getImageDelegate</param>
         public Image NextImage(int frameWidth, int frameHeight, loadDelegate loadInstance, getImageDelegate getImageParam)
         {
+            //DECLARE image of type Image to be populated and returned
+            Image image;
+
             //DECLARE list to read the values of the position of the images
             IList<String> tempList = new List<String>();
 
-            //Populate the list with the image references
+            //populate tempList with the List in ImageMemory
             tempList = loadInstance(tempList);
 
-            //If current image is last in list, reset image displayed to the first in the list
-            if (_currentImage == tempList.Count - 1)
+            //if the retrieved list is not empty run this code
+            //else if the retrieved list is empty create an empty image to be returned
+            if (tempList.Count > 0)
             {
-                _currentImage = 0;
+                //If current image is last in list, reset image displayed to the first in the list
+                //else increase current image by one
+                if (_currentImage == tempList.Count - 1)
+                {
+                    _currentImage = 0;
+                }
+                else
+                {
+                    _currentImage++;
+                }
+
+                //pass list position and frame dimensions of the next image to getImageDelegate
+                image = getImageParam(tempList[_currentImage], frameWidth, frameHeight);
             }
             else
             {
-                //add one onto current list item value
-                _currentImage++;
+                image = new Bitmap(10,10);
             }
 
-            //pass list position and frame dimensions of the next image to getImageDelegate
-            Image image = getImageParam(tempList[_currentImage], frameWidth, frameHeight);
-
-            //return image to form class
-            return image;
+                //return image to where function was called
+                return image;
         }
 
         ///<summary>
@@ -71,26 +83,38 @@ namespace ImageManipulationTool
         ///<param name="getImageParam">send values for image to be displayed to the getImageDelegate</param>
         public Image PrevImage(int frameWidth, int frameHeight, loadDelegate load, getImageDelegate getImageParam)
         {
+            //DECLARE image of type Image to be populated and returned
+            Image image;
+            
             //DECLARE list to read value of position of the images
             IList<String> tempList = new List<String>();
 
-            //populate list with image reference
+            //populate tempList with the List in ImageMemory
             tempList = load(tempList);
 
-            //if current image is first in list, reset image displayed to last in list
-            if (_currentImage == 0)
+            //if the retrieved list is not empty run this code
+            //else if the retrieved list is empty create an empty image to be returned
+            if (tempList.Count > 0)
             {
-                _currentImage = tempList.Count - 1;
+                //if current image is first in list, reset image displayed to last in list
+                //else increase current image by one
+                if (_currentImage == 0)
+                {
+                    _currentImage = tempList.Count - 1;
+                }
+                else
+                {
+                    _currentImage--;
+                }
+                //pass list position and frame dimensions of prev image to getImageParam delegate
+                image = getImageParam(tempList[_currentImage], frameWidth, frameHeight);
             }
             else
             {
-                //minus one from current list item to display previous item in list
-                _currentImage--;
+                image = new Bitmap(10, 10);
             }
-            //pass list position and frame dimensions of prev image to getImageDelegate
-            Image image = getImageParam(tempList[_currentImage], frameWidth, frameHeight);
 
-            //returns image to form class
+            //returns image to where function was called
             return image;
         }
     }
