@@ -52,7 +52,18 @@ namespace ImageManipulationTool
 
         public Image PrevImage(int Width, int Height)
         {
+            Image image = _drawImage.PrevImage(Width, Height, loadInstance, getImageInstance);
 
+            return image;
+        }
+
+        public Image LoadImage(int Width, int Height)
+        {
+            _collectImages.OpenFiles(loadInstance);
+
+            Image image = _drawImage.LoadImage(Width, Height, loadInstance, getImageInstance);
+
+            return image;
         }
 
     }
